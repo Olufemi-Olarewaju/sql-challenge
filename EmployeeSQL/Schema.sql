@@ -57,7 +57,7 @@ CREATE TABLE [titles] (
     CONSTRAINT [PK_titles] PRIMARY KEY CLUSTERED (
         [title_id] ASC
     )
-)
+) s
 
 ALTER TABLE [dept_emp] WITH CHECK ADD CONSTRAINT [FK_dept_emp_emp_no] FOREIGN KEY([emp_no])
 REFERENCES [employees] ([emp_no])
