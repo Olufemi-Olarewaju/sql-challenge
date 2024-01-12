@@ -1,10 +1,14 @@
-﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
--- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
-
+﻿
+drop table if exists departments
+drop table if exists dept_emp
+drop table if exists dept_manager
+drop table if exists employees
+drop table if exists salaries
+drop table if exists titles
 
 CREATE TABLE "departments" (
-    "dept_no" varchar   NOT NULL,
-    "dept_name" varchar   NOT NULL,
+    "dept_no" varchar(30)   NOT NULL,
+    "dept_name" varchar(30)   NOT NULL,
     CONSTRAINT "pk_departments" PRIMARY KEY (
         "dept_no"
      )
@@ -12,14 +16,14 @@ CREATE TABLE "departments" (
 
 CREATE TABLE "dept_emp" (
     "emp_no" integer   NOT NULL,
-    "dept_no" varchar   NOT NULL,
+    "dept_no" varchar(30)   NOT NULL,
     CONSTRAINT "pk_dept_emp" PRIMARY KEY (
         "emp_no","dept_no"
      )
 );
 
 CREATE TABLE "dept_manager" (
-    "dept_no" varchar   NOT NULL,
+    "dept_no" varchar(30)   NOT NULL,
     "emp_no" integer   NOT NULL,
     CONSTRAINT "pk_dept_manager" PRIMARY KEY (
         "emp_no"
@@ -28,11 +32,11 @@ CREATE TABLE "dept_manager" (
 
 CREATE TABLE "employees" (
     "emp_no" integer   NOT NULL,
-    "emp_title_id" varchar   NOT NULL,
+    "emp_title_id" varchar(30)   NOT NULL,
     "birth_date" date   NOT NULL,
-    "first_name" varchar   NOT NULL,
-    "last_name" varchar   NOT NULL,
-    "sex" varchar   NOT NULL,
+    "first_name" varchar(30)   NOT NULL,
+    "last_name" varchar(30)   NOT NULL,
+    "sex" varchar(30)   NOT NULL,
     "hire_date" date   NOT NULL,
     CONSTRAINT "pk_employees" PRIMARY KEY (
         "emp_no"
@@ -48,8 +52,8 @@ CREATE TABLE "salaries" (
 );
 
 CREATE TABLE "titles" (
-    "title_id" varchar   NOT NULL,
-    "title" varchar   NOT NULL,
+    "title_id" varchar(30)   NOT NULL,
+    "title" varchar(30)   NOT NULL,
     CONSTRAINT "pk_titles" PRIMARY KEY (
         "title_id"
      )
@@ -72,4 +76,7 @@ REFERENCES "titles" ("title_id");
 
 ALTER TABLE "salaries" ADD CONSTRAINT "fk_salaries_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no");
+
+
+
 
